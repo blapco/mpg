@@ -3,8 +3,8 @@
 #include <time.h>
 
 char *gen(unsigned int len) {
-  unsigned int rand;
-  unsigned int l, ul, esc, n;
+  unsigned int random;
+  unsigned int l, ul, a, n;
   char *pass;
 
   char *latin[] = {'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
@@ -27,4 +27,35 @@ char *gen(unsigned int len) {
   };
 
   pass = (char*) malloc (len * sizeof(char)); /*allocating password on memory.*/
+  
+  /*generating random sequences*/
+  ul = len - rand() % (len +1);
+  l = len - ul - rand() % (len - ul + 1);
+
+  if(l > 0) {
+    a = len - ul - l - n;
+  }
+
+  else {
+    a = len - ul;
+  }
+
+  for(int i = 0; i < len; i++) {
+    random = rand() % 100;
+    
+    if(random > 50) {
+      pass[i] = upperlatin[rand() % sizeof(upperlatin)];
+    }
+
+    else if(random > 20 && random <= 50) {
+      pass[i] = latin[rand() % sizeof(latin)];
+    }
+
+    else {
+      pass[i] = ansi[rand() % sizeof(ansi)];
+      pass[i] = num [rand() % sizeof(num)];
+    }
+  }
+
+  return pass;
 }
