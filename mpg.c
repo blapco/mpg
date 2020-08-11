@@ -29,7 +29,7 @@ char *gen(unsigned int len) {
   pass = (char*) malloc (len * sizeof(char)); /*allocating password on memory.*/
   
   /*generating random sequences*/
-  ul = len - rand() % (len +1);
+  ul = len - rand() % (len + 1);
   l = len - ul - rand() % (len - ul + 1);
 
   if(l > 0) {
@@ -85,6 +85,9 @@ int main(int argc, char **argv[]) {
   else {
     len = atoi(argv[1]);
   }
+
+  pass = gen(len);
+  printf("%s\n", pass);
 
   return 0; 
 }
