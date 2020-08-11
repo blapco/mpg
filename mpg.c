@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 
 char *gen(unsigned int len) {
 	unsigned int random;
@@ -53,33 +54,42 @@ char *gen(unsigned int len) {
 	return pass;
 }
 
+void print_logo() {
+  printf(" _____ ___ ___\n");
+  printf("|     | . | . |\n");
+  printf("|_|_|_|  _|_  |\n");
+  printf("      |_| |___|\n\n");
+  printf("          ~0xbiel\n\n");
+}
+
 int main(int argc, char **argv[]) {
 	srand(time(0));
 	unsigned int len;
 	char *pass;
+
+  /* determine if stdout is connected to a terminal */
+
+  int tty = isatty(fileno(stdout));
   
   /*if there's no first argument, show help.*/
 
   if(!argv[1]) {
-    printf(" _____ ___ ___\n");
-    printf("|     | . | . |\n");
-    printf("|_|_|_|  _|_  |\n");
-    printf("      |_| |___|\n\n");
-    printf("          ~0xbiel\n\n");
 
-    printf("usage: mpg [password length]\n\n");
+    if(tty) {
+      print_logo();
+      printf("usage: mpg [password length]\n\n");
+    }
 
-    exit(0);
+    exit(1);
   }
 
 	else if (atoi(argv[1]) > 4096 || atoi(argv[1]) < 5) {
-    printf(" _____ ___ ___\n");
-    printf("|     | . | . |\n");
-    printf("|_|_|_|  _|_  |\n");
-    printf("      |_| |___|\n\n");
-    printf("          ~0xbiel\n\n");
 
-    printf("the length must be higher than 5 and lower than 4096.\n");
+    if(tty) {
+      print_logo();
+      printf("the length must be higher than 5 and lower than 4096.\n");
+    }
+
 	  exit(1);
 	} 
   
@@ -87,14 +97,13 @@ int main(int argc, char **argv[]) {
 	  len = atoi(argv[1]);
   }
 
-  printf(" _____ ___ ___\n");
-  printf("|     | . | . |\n");
-  printf("|_|_|_|  _|_  |\n");
-  printf("      |_| |___|\n\n");
-  printf("          ~0xbiel\n\n");
+  if(tty) {
+    print_logo();
+    printf("here's your password: ");
+  }
 
   pass = gen(len);
-	printf("here's your password: %s\n",pass);
+  printf("%s\n",pass);
 
 	return 0;
 }
