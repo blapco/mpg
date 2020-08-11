@@ -53,9 +53,38 @@ char *gen(unsigned int len) {
 
     else {
       pass[i] = ansi[rand() % sizeof(ansi)];
-      pass[i] = num [rand() % sizeof(num)];
+      pass[i] = num[rand() % sizeof(num)];
     }
   }
 
   return pass;
+}
+
+int main(int argc, char **argv[]) {
+  srand(time(0));
+  unsigned int len;
+  char *pass;
+
+  /*if there's no first argument, show help.*/
+
+  if(!argv[1]) {
+    printf(" _____ ___ ___\n");
+    printf("|     | . | . |\n");
+    printf("|_|_|_|  _|_  |\n");
+    printf("      |_| |___|\n\n");
+    printf("          ~0xbiel\n\n");
+    
+    printf("usage: mpg [password length]\n\n");
+  }
+
+  else if(atoi(argv[1]) > 4096 || atoi(argv[1]) < 5) {
+    printf("password length must be bigger than 5 and smaller than 4096.");
+    exit(1);
+  }
+
+  else {
+    len = atoi(argv[1]);
+  }
+
+  return 0; 
 }
