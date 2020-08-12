@@ -7,6 +7,7 @@ char *gen(unsigned int len) {
 	unsigned int random;
 	unsigned int ilatin, iulatin, iansi;
 	unsigned int i;
+  unsigned int dsec = 500000; /*5 sec*/
 	char *pass;
 
   char latin[] = {
@@ -50,11 +51,14 @@ char *gen(unsigned int len) {
 		  pass[i] = ansi[rand() % sizeof(ansi)];
     }
 	}
-	
+
+  /*delay 1 second to generate password to avoid people having the same password.*/
+  system("sleep 01");
+  	
 	return pass;
 }
 
-void print_logo() {
+void printLogo() {
   printf(" _____ ___ ___\n");
   printf("|     | . | . |\n");
   printf("|_|_|_|  _|_  |\n");
@@ -76,7 +80,7 @@ int main(int argc, char **argv[]) {
   if(!argv[1]) {
 
     if(tty) {
-      print_logo();
+      printLogo();
       printf("usage: mpg [password length]\n\n");
     }
 
@@ -86,7 +90,7 @@ int main(int argc, char **argv[]) {
 	else if (atoi(argv[1]) > 4096 || atoi(argv[1]) < 5) {
 
     if(tty) {
-      print_logo();
+      printLogo();
       printf("the length must be higher than 5 and lower than 4096.\n");
     }
 
@@ -98,11 +102,12 @@ int main(int argc, char **argv[]) {
   }
 
   if(tty) {
-    print_logo();
+    printLogo();
     printf("here's your password: ");
   }
 
   pass = gen(len);
+  int usleep(dsec);
   printf("%s\n",pass);
 
 	return 0;
