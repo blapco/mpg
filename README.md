@@ -1,12 +1,4 @@
-<h1 align="center">mpg - minimal password generator.</h1>
-<p align="center">
-  <img src="./assets/help.png" alt="Preview"/><br/>
-  <i>if first argument isn't provided, help is shown.</i>
-  <img src="./assets/small.png" alt="Preview"/><br/>
-  <i>if length is too small or too big, this warning is shown.</i>
-  <img src="./assets/right.png" alt="Preview"/><br/>
-  <i>working right!</i>
-</p>
+# MPG - Minimal Password Manager.
 
 ## Dependecies
 
