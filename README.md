@@ -14,7 +14,7 @@ NONE!
 
 ## Usage
 
-`mpg [lenght]`
+`mpg [length]`
 
 easy, right?
 
