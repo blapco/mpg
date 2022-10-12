@@ -103,5 +103,7 @@ int main(int argc, char **argv[]) {
 	int usleep(dsec);
 	printf("%s\n",pass);
 
+	free(pass);
+
 	return 0;
 }
