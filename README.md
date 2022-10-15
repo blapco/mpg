@@ -1,18 +1,18 @@
-# MPG - Minimal Password Manager.
+# MPG
+
+Minimal Password Generator.
 
 ## Dependecies
 
-NONE!
+None.
 
 ## Usage
 
 `mpg [length]`
 
-easy, right?
-
 ## License
 
-Copyright (C) 2020  Biel A. P.
+Copyright (C) 2020  Biel Polastrini.
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License version 3, as published
 by the Free Software Foundation.
