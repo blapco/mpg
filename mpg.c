@@ -14,18 +14,16 @@ char* gen(unsigned int len) {
 	unsigned int i;
 	char *pass;
 
-	char dict[] = {
-		'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q',
-		'r','s','t','u','v','w','x','y','z',
-		'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R',
-		'S','T','U','V','W','X','Y','Z',
-		'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '!','@','#','$','%','^',
-		'&','*','(',')','-','=','+','.',',',':',';','"','?'
-	};
-	uint32_t dict_len = ((uint32_t)strlen(dict))-1;
+	char *dict = "abcdefghijklmnopqrstuvwxyz" \
+	             "ABCDEFGHIJKLMNOPQRSTUVWXYZ" \
+	             "0123456789!@#$%^&*()-=+.,:;\"?";
 
-	pass = (char *) malloc(len * sizeof(char)); /*allocating pass on memory.*/
-	/*generating random sequences.*/
+	uint32_t dict_len = ((uint32_t)strlen(dict));
+
+	/* allocating pass on memory. */
+	pass = (char *)malloc(len * sizeof(char));
+
+	/* generate random sequence. */
 	for (i = 0; i < len; i++) {
 		pass[i] = dict[urand_int(dict_len)];
 	}
@@ -50,7 +48,7 @@ int main(int argc, char **argv[]) {
 
 	int tty = isatty(fileno(stdout));
 
-	/*if there's no first argument, show help.*/
+	/* if there's no first argument, show help. */
 
 	if (!argv[1]) {
 		if(tty) {
