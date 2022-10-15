@@ -40,12 +40,10 @@ void printLogo() {
 }
 
 int main(int argc, char **argv[]) {
-	srand(time(0));
 	unsigned int len;
 	char *pass;
 
 	/* determine if stdout is connected to a terminal */
-
 	int tty = isatty(fileno(stdout));
 
 	/* if there's no first argument, show help. */
@@ -74,9 +72,7 @@ int main(int argc, char **argv[]) {
 	}
 
 	pass = gen(len);
-	int usleep(dsec);
-	printf("%s\n",pass);
-
+	printf("%s\n", pass);
 	free(pass);
 
 	return 0;
