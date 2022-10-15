@@ -1,5 +1,5 @@
 default:
-	gcc mpg.c -o mpg
+	gcc mpg.c srandom.c -o mpg
 clean:
 	rm mpg
 install: 
