@@ -34,7 +34,7 @@ void print_logo() {
 	printf("|     | . | . |\n");
 	printf("|_|_|_|  _|_  |\n");
 	printf("      |_| |___|\n\n");
-	printf("          ~0xbiel\n\n");
+	printf("        ~blblapco\n\n");
 }
 
 void usage(void) {
