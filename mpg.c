@@ -34,13 +34,19 @@ void print_logo() {
 	printf("|     | . | . |\n");
 	printf("|_|_|_|  _|_  |\n");
 	printf("      |_| |___|\n\n");
-	printf("        ~blblapco\n\n");
 }
 
 void usage(void) {
 	fprintf(stderr, "usage: mpg [length]\n");
 	fprintf(stderr, "where: [length] is the length of the desired password\n");
 	fprintf(stderr, "       (greater than 5, lower than 4096).\n\n");
+}
+
+void version(void) {
+	printf("Bits, Links And Packages Collection's Minimal Password Generator.\n");
+	printf("version: 0.2\n");
+	printf("source code: https://git.blapco.xyz/mpg\n");
+	printf("             https://github.com/blapco/mpg\n\n");
 }
 
 int main(int argc, char *argv[]) {
@@ -56,6 +62,12 @@ int main(int argc, char *argv[]) {
 	/* if there's no first argument, show help. */
 	if (!argv[1]) {
 		usage();
+		exit(1);
+	}
+	
+	/* if first argument is "-v" or "--version", returns mpg's version. */
+	if (strcmp(argv[1], "-v") == 0 || strcmp(argv[1], "--version") == 0) {
+		version();
 		exit(1);
 	}
 
